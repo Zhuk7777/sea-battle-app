@@ -1,0 +1,119 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-content: center space-between;
+  align-items: center;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 7px;
+  inline-size: 100%;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  margin-left: 7px;
+  line-height: 1.3em;
+  inline-size: 100%;
+  max-inline-size: 240px;
+  color: #fff;
+}
+
+.contact {
+  color: inherit;
+  text-underline-offset: 2px;
+}
+
+.contact:hover {
+  opacity: 0.6;
+}
+
+.logo {
+  display: block;
+  justify-self: center;
+  inline-size: 74px;
+  block-size: 65px;
+}
+
+.social-link {
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  column-gap: 4px;
+  margin-right: 7px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  opacity: 0.4;
+}
+
+.social-icon {
+  block-size: 20px;
+}
+
+@media(min-width: 576px) {
+  .header {
+    font-size: 10px;
+  }
+
+  .contact {
+    text-underline-offset: 4px;
+  }
+
+  .logo {
+    inline-size: 80px;
+    block-size: 71px;
+  }
+
+  .social-icon {
+    block-size: 26px;
+  }
+
+}
+
+@media(min-width: 768px) {
+  .header {
+    font-size: 12px;
+  }
+
+  .logo {
+    inline-size: 86px;
+    block-size: 77px;
+  }
+
+  .social-icon {
+    block-size: 32px;
+  }
+}
+
+@media(min-width: 992px) {
+  .header {
+    font-size: 15px;
+  }
+
+  .logo {
+    inline-size: 130px;
+    block-size: 120px;
+  }
+
+  .social-icon {
+    block-size: 39px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .header {
+    font-size: 18px;
+  }
+
+  .logo {
+    inline-size: 148px;
+    block-size: 130px;
+  }
+
+  .social-icon {
+    block-size: 48px;
+  }
+}

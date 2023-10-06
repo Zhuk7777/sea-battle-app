@@ -1,10 +1,8 @@
+import MainPage from "./pages/main/MainPage";
+
 function App() {
   return (
-    <>
-    <h1>
-      Привет, Мир!
-    </h1>
-    </>
+    <MainPage></MainPage>
   )
 }
 

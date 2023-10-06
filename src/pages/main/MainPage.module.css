@@ -1,0 +1,92 @@
+.cover {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(./cover.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  inline-size: 100%;
+  min-block-size: 300px;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: rgb(0 0 0 / 0.5);
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+  font-size: 7px;
+  text-transform: lowercase;
+}
+
+@media(min-width: 576px) {
+  .cover {
+    min-block-size: 350px;
+  }
+
+  .title {
+    font-size: 50px;
+  }
+
+  .text {
+    font-size: 10px;
+  }
+}
+
+@media(min-width: 768px) {
+  .cover {
+    min-block-size: 400px;
+  }
+
+  .title {
+    font-size: 60px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+}
+
+@media(min-width: 992px) {
+  .cover {
+    min-block-size: 450px;
+  }
+
+  .title {
+    font-size: 70px;
+  }
+
+  .text {
+    font-size: 15px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .cover {
+    min-block-size: 500px;
+  }
+
+  .title {
+    font-size: 75px;
+  }
+
+  .text {
+    font-size: 18px;
+  }
+}
