@@ -1,3 +1,13 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+}
+
 .cover {
   position: relative;
   z-index: 0;
@@ -5,6 +15,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-block-end: 50px;
   background-image: url(./cover.jpg);
   background-repeat: no-repeat;
   background-position: center;
@@ -18,21 +29,52 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: rgb(0 0 0 / 0.5);
+  background-color: rgb(0 0 0 / 0.6);
 }
 
-.title {
+.cover__title {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   font-size: 40px;
   text-transform: uppercase;
 }
 
-.text {
+.cover__text {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
   font-size: 7px;
   text-transform: lowercase;
+}
+
+.info-field {
+  margin: 0 5% 50px 5%;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 7px;
+  line-height: 1.3em;
+}
+
+.info-field__title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3em;
+}
+
+.registration-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 5% 100px 5%;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  padding: 3%;
+}
+
+.registration-field__title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
 }
 
 @media(min-width: 576px) {
@@ -40,12 +82,24 @@
     min-block-size: 350px;
   }
 
-  .title {
+  .cover__title {
     font-size: 50px;
   }
 
-  .text {
+  .cover__text {
     font-size: 10px;
+  }
+
+  .info-field {
+    font-size: 10px;
+  }
+  
+  .info-field__title {
+    font-size: 20px;
+  }
+
+  .registration-field__title {
+    font-size: 18px;
   }
 }
 
@@ -54,12 +108,24 @@
     min-block-size: 400px;
   }
 
-  .title {
+  .cover__title {
     font-size: 60px;
   }
 
-  .text {
+  .cover__text {
     font-size: 12px;
+  }
+
+  .info-field {
+    font-size: 12px;
+  }
+  
+  .info-field__title {
+    font-size: 22px;
+  }
+
+  .registration-field__title {
+    font-size: 20px;
   }
 }
 
@@ -68,12 +134,24 @@
     min-block-size: 450px;
   }
 
-  .title {
+  .cover__title {
     font-size: 70px;
   }
 
-  .text {
+  .cover__text {
     font-size: 15px;
+  }
+
+  .info-field {
+    font-size: 13px;
+  }
+  
+  .info-field__title {
+    font-size: 26px;
+  }
+
+  .registration-field__title {
+    font-size: 22px;
   }
 }
 
@@ -82,11 +160,23 @@
     min-block-size: 500px;
   }
 
-  .title {
+  .cover__title {
     font-size: 75px;
   }
 
-  .text {
+  .cover__text {
     font-size: 18px;
+  }
+
+  .info-field {
+    font-size: 16px;
+  }
+  
+  .info-field__title {
+    font-size: 30px;
+  }
+
+  .registration-field__title {
+    font-size: 26px;
   }
 }
