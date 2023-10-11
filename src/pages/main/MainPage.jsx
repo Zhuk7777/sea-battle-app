@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import classes from './MainPage.module.css';
 import Header from '../../components/header/Header';
 import RegistrationForm from '../../components/registrationForm/RegistrationForm';

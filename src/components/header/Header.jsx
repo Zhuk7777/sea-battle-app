@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import classes from './Header.module.css';
-import logo from './logo.svg'
-import vkLogo from './vk.svg'
+import logo from './logo.svg';
+import vkLogo from './vk.svg';
 
 const Header = () => {
   return (
