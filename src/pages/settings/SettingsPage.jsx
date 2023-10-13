@@ -36,7 +36,12 @@ const SettingsPage = () => {
           </p>
         </section>
         <section className={classes['board-container']}>
-          <button className={classes['board-container__button']}>Заново</button>
+          <button 
+            className={classes['board-container__button']}
+            onClick={()=>start()}
+          >
+            Заново
+          </button>
           <Board
             board={board}
             isMyBoard={true}

@@ -1,11 +1,28 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import classes from './Board.module.css';
 import Cell from '../cell/Cell';
 
 const Board = ({board, isMyBoard, setBoard, readyToFight, canShoot, shoot}) => {
 
   const addMark = (x,y) => {
+    if(!readyToFight)
+    {
+      if(board.getCells(x,y)?.mark?.name === 'ship')
+        board.addCancel(x,y)
+      else 
+        board.addShip(x,y)
+    }
+    else if (canShoot && !isMyBoard)
+    {
+      shoot(x,y)
+    }
 
+    updateBoard()
+  }
+
+  const updateBoard = () => {
+    const newBoard = board.getCopyBoard()
+    setBoard(newBoard)
   }
 
   const lineNumbers = useMemo(()=>{

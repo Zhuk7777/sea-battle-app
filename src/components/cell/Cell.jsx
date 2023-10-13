@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import classes from './Cell.module.css';
 
 const Cell = ({cell, addMark}) => {
-  const cellClass = ['cell']
-  cellClass.push(cell?.mark?.color)
 
-  useEffect(()=>{
-    //console.log(cellClass.join('_'))
-    //console.log('lox')
-  }, [])
+  const cellClass = useMemo(()=>{
+    const basicClass = ['cell']
+    if(cell?.mark?.color !== undefined)
+      basicClass.push(`cell_${cell?.mark?.color}`)
+    return basicClass
+  }, [cell?.mark?.color])
 
   return (
     <div 
-      className={classes.cell} 
+      className={`${classes[cellClass[0]]} ${classes[cellClass[1]]}`} 
       onClick={()=>addMark(cell.x, cell.y)}
     >
-
     </div>
   )
 }
