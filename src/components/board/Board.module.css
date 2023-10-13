@@ -1,0 +1,31 @@
+.letters {
+  color: #fff;
+}
+
+.letter {
+  display: inline-block;
+  inline-size: 40px;
+}
+
+.numbered-grid {
+  display: flex;
+  column-gap: 5px;
+}
+
+.numbers {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  align-items: center;
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: start;
+  inline-size: 400px;
+  block-size: 400px;
+  box-sizing: border-box;
+}

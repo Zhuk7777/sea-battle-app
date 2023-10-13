@@ -1,0 +1,10 @@
+.cell {
+  inline-size: 40px;
+  block-size: 40px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: rgb(67, 64, 64);
+}
