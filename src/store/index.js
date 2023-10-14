@@ -3,6 +3,7 @@ import { userReducer } from "./userReducer"
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
+import { userBoardReducer } from "./userBoardReducer"
 
 const persistConfig = {
   key: 'root',
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers ({
   user: userReducer,
+  userBoard: userBoardReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

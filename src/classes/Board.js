@@ -40,7 +40,7 @@ export class BoardType {
     new Damage(this.getCells(x,y))
   }
 
-  addCancel(x,y){
+  сancel(x,y){
     new Cancel(this.getCells(x,y))
   }
 }

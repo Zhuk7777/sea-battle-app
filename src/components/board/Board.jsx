@@ -8,7 +8,7 @@ const Board = ({board, isMyBoard, setBoard, readyToFight, canShoot, shoot}) => {
     if(!readyToFight)
     {
       if(board.getCells(x,y)?.mark?.name === 'ship')
-        board.addCancel(x,y)
+        board.сancel(x,y)
       else 
         board.addShip(x,y)
     }

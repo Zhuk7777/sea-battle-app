@@ -8,7 +8,8 @@ import { BoardType } from '../../classes/Board';
 const SettingsPage = () => {
 
   const [board, setBoard] = useState(new BoardType())
-  const [readyToFight, setReadyToFight] = useState(false)
+  //const [typeOfShip, setTypeOfShip] = useState(1)
+  //const [shipDirection, setShipDirection] = useState('up')
 
   const start = () => {
     const newBoard = new BoardType()
@@ -35,6 +36,8 @@ const SettingsPage = () => {
             между кораблями должна соблюдаться дистанция минимум в одну клетку.
           </p>
         </section>
+        <section className={classes['ship-selection']}>
+        </section>
         <section className={classes['board-container']}>
           <button 
             className={classes['board-container__button']}
@@ -46,7 +49,7 @@ const SettingsPage = () => {
             board={board}
             isMyBoard={true}
             canShoot={false}
-            readyToFight={readyToFight}
+            readyToFight={false}
             setBoard={setBoard}
           />
           <button className={classes['board-container__button']}>В бой!</button>
