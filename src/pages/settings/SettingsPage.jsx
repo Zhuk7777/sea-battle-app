@@ -4,17 +4,31 @@ import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Board from '../../components/board/Board';
 import { BoardType } from '../../classes/Board';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeBoardAction, updateBoardAction } from '../../store/userBoardReducer';
 
 const SettingsPage = () => {
+  const dispatch = useDispatch()
 
-  const [board, setBoard] = useState(new BoardType())
+  //const [board, setBoard] = useState(useSelector(state => state.userBoard.board))
+  const board = useSelector(state => state.userBoard.board)
   //const [typeOfShip, setTypeOfShip] = useState(1)
   //const [shipDirection, setShipDirection] = useState('up')
 
+
   const start = () => {
-    const newBoard = new BoardType()
-    newBoard.initCells()
-    setBoard(newBoard)
+    if(board == null)
+    {
+      const startBoard = new BoardType()
+      startBoard.initCells()
+      dispatch(updateBoardAction(startBoard))
+    }
+  }
+
+  const restart = () => {
+    const startBoard = new BoardType()
+    startBoard.initCells()
+    dispatch(updateBoardAction(startBoard))
   }
 
   useEffect(()=>{
@@ -41,7 +55,7 @@ const SettingsPage = () => {
         <section className={classes['board-container']}>
           <button 
             className={classes['board-container__button']}
-            onClick={()=>start()}
+            onClick={()=>restart()}
           >
             Заново
           </button>
@@ -50,7 +64,6 @@ const SettingsPage = () => {
             isMyBoard={true}
             canShoot={false}
             readyToFight={false}
-            setBoard={setBoard}
           />
           <button className={classes['board-container__button']}>В бой!</button>
         </section>

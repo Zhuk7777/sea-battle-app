@@ -1,8 +1,11 @@
 import React, { useMemo } from 'react';
 import classes from './Board.module.css';
 import Cell from '../cell/Cell';
+import { useDispatch } from 'react-redux';
+import { updateBoardAction } from '../../store/userBoardReducer';
 
-const Board = ({board, isMyBoard, setBoard, readyToFight, canShoot, shoot}) => {
+const Board = ({board, isMyBoard, readyToFight, canShoot, shoot}) => {
+  const dispatch = useDispatch()
 
   const addMark = (x,y) => {
     if(!readyToFight)
@@ -22,7 +25,7 @@ const Board = ({board, isMyBoard, setBoard, readyToFight, canShoot, shoot}) => {
 
   const updateBoard = () => {
     const newBoard = board.getCopyBoard()
-    setBoard(newBoard)
+    dispatch(updateBoardAction(newBoard))
   }
 
   const lineNumbers = useMemo(()=>{
@@ -54,7 +57,7 @@ const Board = ({board, isMyBoard, setBoard, readyToFight, canShoot, shoot}) => {
           {lineNumbers}
         </div>
         <div className={classes.grid}>
-          {board.cells.map((row, index)=>
+          {board?.cells.map((row, index)=>
             <React.Fragment key={index}>
               {row.map(cell =>
                 <Cell key={cell.id} cell={cell} addMark={addMark}></Cell>
