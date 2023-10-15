@@ -1,0 +1,66 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+}
+
+.main {
+  flex-grow: 1;
+  border-block-start: 1px solid #fff;
+}
+
+.rules {
+  margin: 20px 5% 50px 5%;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 400;
+  font-size: 7px;
+  line-height: 1.3em;
+}
+
+.rules__title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.3em;
+
+}
+
+@media(min-width: 576px) {
+  .rules {
+    font-size: 10px;
+  }
+  
+  .rules__title {
+    font-size: 20px;
+  }
+}
+
+@media(min-width: 768px) {
+  .rules {
+    font-size: 12px;
+  }
+  
+  .rules__title {
+    font-size: 22px;
+  }
+}
+
+@media(min-width: 992px) {
+  .rules {
+    font-size: 15px;
+  }
+  
+  .rules__title {
+    font-size: 26px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .rules {
+    font-size: 18px;
+  }
+  
+  .rules__title {
+    font-size: 30px;
+  }
+}

@@ -1,0 +1,53 @@
+.panel {
+  display: flex;
+  justify-content: end;
+  column-gap: 4px;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-weight: 200;
+  inline-size: 100%;
+  padding: 10px;
+  align-items: center;
+  border-block-start: 1px solid #fff;
+  border-block-end: 1px solid #fff;
+  min-block-size: 40px;
+}
+
+.button {
+  border: 1px solid #fff;
+  border-radius: 7px;
+  padding: 3px;
+  color: #fff;
+  font-size: 6px;
+  background-color: #1b1919;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #1b1919;
+  background-color: #fff;
+  transition-duration: 300ms;
+}
+
+@media(min-width: 576px) {
+ .button {
+    font-size: 10px;
+  }
+}
+
+@media(min-width: 768px) {
+ .button {
+    font-size: 12px;
+ }
+}
+
+@media(min-width: 992px) {
+ .button {
+    font-size: 14px;
+  }
+}
+
+@media(min-width: 1200px) {
+ .button {
+    font-size: 16px;
+  }
+}
