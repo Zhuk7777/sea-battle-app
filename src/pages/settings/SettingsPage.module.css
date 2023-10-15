@@ -39,11 +39,12 @@
   border-radius: 5px;
   padding: 3px;
   color: #fff;
-  font-size: 16px;
+  font-size: 8px;
   background-color: #1b1919;
   cursor: pointer;
-  inline-size: 200px;
-  block-size: 30px;
+  inline-size: 100%;
+  max-inline-size: 80px;
+  block-size: 14px;
 }
 
 .board-container__button:hover {
@@ -60,6 +61,12 @@
   .rules__title {
     font-size: 20px;
   }
+
+  .board-container__button {
+    max-inline-size: 100px;
+    block-size: 18px;
+    font-size: 10px;
+  }
 }
 
 @media(min-width: 768px) {
@@ -69,6 +76,12 @@
   
   .rules__title {
     font-size: 22px;
+  }
+
+  .board-container__button {
+    max-inline-size: 125px;
+    block-size: 23px;
+    font-size: 12px;
   }
 }
 
@@ -80,6 +93,12 @@
   .rules__title {
     font-size: 26px;
   }
+
+  .board-container__button {
+    max-inline-size: 150px;
+    block-size: 26px;
+    font-size: 14px;
+  }
 }
 
 @media(min-width: 1200px) {
@@ -89,6 +108,12 @@
   
   .rules__title {
     font-size: 30px;
+  }
+
+  .board-container__button {
+    max-inline-size: 200px;
+    block-size: 30px;
+    font-size: 16px;
   }
 }
 

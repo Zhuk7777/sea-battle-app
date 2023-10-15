@@ -1,19 +1,43 @@
 import React, { useMemo } from 'react';
 import classes from './Board.module.css';
 import Cell from '../cell/Cell';
-import { useDispatch } from 'react-redux';
-import { updateBoardAction } from '../../store/userBoardReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { reduceCountDoubleDeckedShipsAction, reduceCountFourDeckedShipsAction, reduceCountSingleDeckedShipsAction, reduceCountThreeDeckedShipsAction, updateBoardAction } from '../../store/userBoardReducer';
+import { addShip } from '../../functions/addShip';
+import { checkCountShip } from '../../functions/checkCountShip';
+import { canAddShip } from '../../functions/canAddShip';
 
-const Board = ({board, isMyBoard, readyToFight, canShoot, shoot}) => {
+const Board = ({board, isMyBoard, readyToFight, canShoot, shoot, typeOfShip, shipDirection}) => {
   const dispatch = useDispatch()
-  
+  const countOfFour_deckShips = useSelector(state => state.userBoard.countOfFour_deckShips)
+  const countOfThree_deckShips = useSelector(state => state.userBoard.countOfThree_deckShips)
+  const countOfDouble_deckShips = useSelector(state => state.userBoard.countOfDouble_deckShips)
+  const countOfSingle_deckShips = useSelector(state => state.userBoard.countOfSingle_deckShips)
+
   const addMark = (x,y) => {
     if(!readyToFight)
     {
-      if(board.getCells(x,y)?.mark?.name === 'ship')
-        board.сancel(x,y)
-      else 
-        board.addShip(x,y)
+      if(checkCountShip(typeOfShip, countOfFour_deckShips, countOfThree_deckShips, 
+      countOfDouble_deckShips, countOfSingle_deckShips) &&
+      canAddShip(board, x, y, typeOfShip, shipDirection))
+      {
+        addShip(board, x, y, typeOfShip, shipDirection)
+        switch(typeOfShip)
+        {
+          case '1':
+            dispatch(reduceCountSingleDeckedShipsAction())
+            break
+          case '2':
+            dispatch(reduceCountDoubleDeckedShipsAction())
+            break
+          case '3':
+            dispatch(reduceCountThreeDeckedShipsAction())
+            break
+          case '4':
+            dispatch(reduceCountFourDeckedShipsAction())
+            break
+        }
+      }
     }
     else if (canShoot && !isMyBoard)
     {

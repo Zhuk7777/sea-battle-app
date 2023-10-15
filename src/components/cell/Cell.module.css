@@ -1,8 +1,8 @@
 .cell {
-  inline-size: 40px;
-  block-size: 40px;
   border: 1px solid #fff;
   cursor: pointer;
+  inline-size: 15px;
+  block-size: 15px;
 }
 
 .cell_grey {
@@ -15,4 +15,32 @@
 
 .cell_green {
   background-color: rgb(29, 180, 29);
+}
+
+@media(min-width: 576px) {
+  .cell {
+    inline-size: 20px;
+    block-size: 20px;
+  }
+}
+
+@media(min-width: 768px) {
+  .cell {
+    inline-size: 25px;
+    block-size: 25px;
+  }
+}
+
+@media(min-width: 992px) {
+  .cell {
+    inline-size: 30px;
+    block-size: 30px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .cell {
+    inline-size: 40px;
+    block-size: 40px;
+  }
 }
