@@ -1,17 +1,17 @@
-//import { BoardType } from "../classes/Board"
+import { BoardType } from "../classes/Board"
 
-/*const emptyBoard = () => {
+const emptyBoard = () => {
   const newBoard = new BoardType()
   newBoard.initCells()
-  return newBoard.getCells(1,2)
-}*/
+  return newBoard
+}
 
 const defaultState = {
   countOfFour_deckShips: 1,
   countOfThree_deckShips: 2,
   countOfDouble_deckShips: 3,
   countOfSingle_deckShips: 4,
-  board: null,
+  board: emptyBoard(),
 }
 
 const REDUCE_COUNT_SINGLE_DECKED_SHIPS = "REDUCE_COUNT_SINGLE_DECKED_SHIPS"
@@ -40,7 +40,7 @@ export const userBoardReducer = (state = defaultState, action) => {
           return {...state, board: action.payload}
 
       case REMOVE:
-          return {...state, board: null, countOfSingle_deckShips: 4, countOfDouble_deckShips: 3, countOfThree_deckShips: 2, countOfFour_deckShips: 1}
+          return {...state, board: emptyBoard(), countOfSingle_deckShips: 4, countOfDouble_deckShips: 3, countOfThree_deckShips: 2, countOfFour_deckShips: 1}
 
       default:
           return state

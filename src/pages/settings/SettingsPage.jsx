@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import classes from './SettingsPage.module.css';
 import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Board from '../../components/board/Board';
-import { BoardType } from '../../classes/Board';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBoardAction, updateBoardAction } from '../../store/userBoardReducer';
+import { BoardType } from '../../classes/Board';
 
 const SettingsPage = () => {
   const dispatch = useDispatch()
@@ -15,25 +15,20 @@ const SettingsPage = () => {
   //const [typeOfShip, setTypeOfShip] = useState(1)
   //const [shipDirection, setShipDirection] = useState('up')
 
-
-  const start = () => {
-    if(board == null)
+  useEffect(()=>{
+    console.log('верхний уровень')
+    if (typeof(board)!= BoardType)
     {
-      const startBoard = new BoardType()
-      startBoard.initCells()
-      dispatch(updateBoardAction(startBoard))
+      console.log('if');
+      const newBoard = new BoardType()
+      newBoard.setCells(board.cells)
+      dispatch(updateBoardAction(newBoard))
     }
-  }
+  }, [])
 
   const restart = () => {
-    const startBoard = new BoardType()
-    startBoard.initCells()
-    dispatch(updateBoardAction(startBoard))
+    dispatch(removeBoardAction())
   }
-
-  useEffect(()=>{
-    start()
-  }, [])
 
   return (
     <div className={classes.wrapper}>

@@ -6,7 +6,7 @@ import { updateBoardAction } from '../../store/userBoardReducer';
 
 const Board = ({board, isMyBoard, readyToFight, canShoot, shoot}) => {
   const dispatch = useDispatch()
-
+  
   const addMark = (x,y) => {
     if(!readyToFight)
     {

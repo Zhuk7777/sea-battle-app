@@ -24,6 +24,10 @@ export class BoardType {
     return newBoard
   }
 
+  setCells(cells) {
+    this.cells = cells
+  }
+
   getCells(x,y) {
     return this.cells[y][x]
   }
