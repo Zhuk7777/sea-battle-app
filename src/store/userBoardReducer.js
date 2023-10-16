@@ -19,7 +19,7 @@ const REDUCE_COUNT_DOUBLE_DECKED_SHIPS = "REDUCE_COUNT_DOUBLE_DECKED_SHIPS"
 const REDUCE_COUNT_THREE_DECKED_SHIPS = "REDUCE_COUNT_THREE_DECKED_SHIPS"
 const REDUCE_COUNT_FOUR_DECKED_SHIPS = "REDUCE_COUNT_FOUR_DECKED_SHIPS"
 const UPDATE_BOARD = "UPDATE_BOARD"
-const REMOVE = "REMOVE"
+const REMOVE_BOARD = "REMOVE"
 
 
 export const userBoardReducer = (state = defaultState, action) => {
@@ -39,7 +39,7 @@ export const userBoardReducer = (state = defaultState, action) => {
       case UPDATE_BOARD: 
           return {...state, board: action.payload}
 
-      case REMOVE:
+      case REMOVE_BOARD:
           return {...state, board: emptyBoard(), countOfSingle_deckShips: 4, countOfDouble_deckShips: 3, countOfThree_deckShips: 2, countOfFour_deckShips: 1}
 
       default:
@@ -52,4 +52,4 @@ export const reduceCountDoubleDeckedShipsAction = () => ({type: REDUCE_COUNT_DOU
 export const reduceCountThreeDeckedShipsAction = () => ({type :REDUCE_COUNT_THREE_DECKED_SHIPS})
 export const reduceCountFourDeckedShipsAction = () => ({type: REDUCE_COUNT_FOUR_DECKED_SHIPS})
 export const updateBoardAction = (payload) => ({type: UPDATE_BOARD, payload})
-export const removeBoardAction = () => ({type: REMOVE})
+export const removeBoardAction = () => ({type: REMOVE_BOARD})

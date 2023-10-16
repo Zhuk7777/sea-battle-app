@@ -7,6 +7,7 @@ import { userBoardReducer } from "./userBoardReducer"
 import { createTransform } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import {parse, stringify} from "flatted"
+import { robotBoardReducer } from "./roborBoardReducer"
 
 const transformCircular = createTransform(
   (inboundState, key) => stringify(inboundState),
@@ -24,6 +25,7 @@ const persistConfig = {
 const rootReducer = combineReducers ({
   user: userReducer,
   userBoard: userBoardReducer,
+  robotBoard: robotBoardReducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

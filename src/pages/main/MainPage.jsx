@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './MainPage.module.css';
 import Header from '../../components/header/Header';
 import RegistrationForm from '../../components/registrationForm/RegistrationForm';
 import Footer from '../../components/footer/Footer';
+import { useDispatch } from 'react-redux';
+import { removeBoardAction } from '../../store/userBoardReducer';
+import { removeUserAction } from '../../store/userReducer';
 
 const MainPage = () => {
+  const dispatch =useDispatch()
+
+  useEffect(()=>{
+    dispatch(removeBoardAction())
+    dispatch(removeUserAction())
+  },[])
+  
   return (
     <div className={classes.wrapper}>
       <Header/>

@@ -8,16 +8,25 @@ import { removeBoardAction, updateBoardAction } from '../../store/userBoardReduc
 import { BoardType } from '../../classes/Board';
 import ShipSelectionForm from '../../components/shipSelectionForm/ShipSelectionForm';
 import { useNavigate } from 'react-router-dom';
+import { areShipsReady } from '../../functions/areShipsReady';
+import { updateRobotBoardAction } from '../../store/roborBoardReducer';
+import { randomPlacementShips } from '../../functions/randomPlacementShips';
 
 const SettingsPage = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  const countOfFour_deckShips = useSelector(state => state.userBoard.countOfFour_deckShips)
+  const countOfThree_deckShips = useSelector(state => state.userBoard.countOfThree_deckShips)
+  const countOfDouble_deckShips = useSelector(state => state.userBoard.countOfDouble_deckShips)
+  const countOfSingle_deckShips = useSelector(state => state.userBoard.countOfSingle_deckShips)
   const board = useSelector(state => state.userBoard.board)
+
   const [typeOfShip, setTypeOfShip] = useState('1')
   const [shipDirection, setShipDirection] = useState('up')
 
   useEffect(()=>{
+    dispatch(updateRobotBoardAction(randomPlacementShips()))
     if (typeof(board)!= BoardType)
     {
       const newBoard = new BoardType()
@@ -28,6 +37,14 @@ const SettingsPage = () => {
 
   const restart = () => {
     dispatch(removeBoardAction())
+  }
+
+  const startPlaying = () => {
+    if(areShipsReady(countOfFour_deckShips, countOfThree_deckShips, 
+    countOfDouble_deckShips, countOfSingle_deckShips))
+      navigate('/game',{ replace: true })
+    else
+      alert('Расставьте все корабли')
   }
 
   return (
@@ -68,7 +85,7 @@ const SettingsPage = () => {
           />
           <button 
             className={classes['board-container__button']}
-            onClick={() => navigate('/game')}
+            onClick={() => startPlaying()}
           >
             В бой!
           </button>
