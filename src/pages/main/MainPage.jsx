@@ -4,14 +4,14 @@ import Header from '../../components/header/Header';
 import RegistrationForm from '../../components/registrationForm/RegistrationForm';
 import Footer from '../../components/footer/Footer';
 import { useDispatch } from 'react-redux';
-import { removeBoardAction } from '../../store/userBoardReducer';
+import { removeUserBoardAction } from '../../store/userBoardReducer';
 import { removeUserAction } from '../../store/userReducer';
 
 const MainPage = () => {
   const dispatch =useDispatch()
 
   useEffect(()=>{
-    dispatch(removeBoardAction())
+    dispatch(removeUserBoardAction())
     dispatch(removeUserAction())
   },[])
   

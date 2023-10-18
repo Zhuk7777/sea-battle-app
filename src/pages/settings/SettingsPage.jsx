@@ -4,13 +4,14 @@ import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Board from '../../components/board/Board';
 import { useDispatch, useSelector } from 'react-redux';
-import { removeBoardAction, updateBoardAction } from '../../store/userBoardReducer';
+import { removeUserBoardAction, updateUserBoardAction } from '../../store/userBoardReducer';
 import { BoardType } from '../../classes/Board';
 import ShipSelectionForm from '../../components/shipSelectionForm/ShipSelectionForm';
 import { useNavigate } from 'react-router-dom';
 import { areShipsReady } from '../../functions/areShipsReady';
 import { updateRobotBoardAction } from '../../store/roborBoardReducer';
 import { randomPlacementShips } from '../../functions/randomPlacementShips';
+import { setFirstMove } from '../../store/userReducer';
 
 const SettingsPage = () => {
   const dispatch = useDispatch()
@@ -26,23 +27,28 @@ const SettingsPage = () => {
   const [shipDirection, setShipDirection] = useState('up')
 
   useEffect(()=>{
-    dispatch(updateRobotBoardAction(randomPlacementShips()))
     if (typeof(board)!= BoardType)
     {
       const newBoard = new BoardType()
       newBoard.setCells(board.cells)
-      dispatch(updateBoardAction(newBoard))
+      dispatch(updateUserBoardAction(newBoard))
     }
   }, [])
 
   const restart = () => {
-    dispatch(removeBoardAction())
+    dispatch(removeUserBoardAction())
   }
 
   const startPlaying = () => {
     if(areShipsReady(countOfFour_deckShips, countOfThree_deckShips, 
     countOfDouble_deckShips, countOfSingle_deckShips))
+    {
       navigate('/game',{ replace: true })
+      dispatch(updateRobotBoardAction(randomPlacementShips()))
+
+      let myMove = Math.random() < 0.5
+      dispatch(setFirstMove(myMove))
+    }
     else
       alert('Расставьте все корабли')
   }

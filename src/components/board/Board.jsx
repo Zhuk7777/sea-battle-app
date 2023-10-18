@@ -2,10 +2,11 @@ import React, { useMemo } from 'react';
 import classes from './Board.module.css';
 import Cell from '../cell/Cell';
 import { useDispatch, useSelector } from 'react-redux';
-import { reduceCountDoubleDeckedShipsAction, reduceCountFourDeckedShipsAction, reduceCountSingleDeckedShipsAction, reduceCountThreeDeckedShipsAction, updateBoardAction } from '../../store/userBoardReducer';
+import { reduceUserCountDoubleDeckedShipsAction, reduceUserCountFourDeckedShipsAction, reduceUserCountSingleDeckedShipsAction, reduceUserCountThreeDeckedShipsAction, updateUserBoardAction } from '../../store/userBoardReducer';
 import { addShip } from '../../functions/addShip';
 import { checkCountShip } from '../../functions/checkCountShip';
 import { canAddShip } from '../../functions/canAddShip';
+import { updateRobotBoardAction } from '../../store/roborBoardReducer';
 
 const Board = ({board, isMyBoard, readyToFight, canShoot, shoot, typeOfShip, shipDirection}) => {
   const dispatch = useDispatch()
@@ -19,22 +20,22 @@ const Board = ({board, isMyBoard, readyToFight, canShoot, shoot, typeOfShip, shi
     {
       if(checkCountShip(typeOfShip, countOfFour_deckShips, countOfThree_deckShips, 
       countOfDouble_deckShips, countOfSingle_deckShips) &&
-      canAddShip(board, x, y, typeOfShip, shipDirection))
+      canAddShip(board, x, y, typeOfShip, shipDirection, isMyBoard))
       {
-        addShip(board, x, y, typeOfShip, shipDirection)
+        addShip(board, x, y, typeOfShip, shipDirection, isMyBoard)
         switch(typeOfShip)
         {
           case '1':
-            dispatch(reduceCountSingleDeckedShipsAction())
+            dispatch(reduceUserCountSingleDeckedShipsAction())
             break
           case '2':
-            dispatch(reduceCountDoubleDeckedShipsAction())
+            dispatch(reduceUserCountDoubleDeckedShipsAction())
             break
           case '3':
-            dispatch(reduceCountThreeDeckedShipsAction())
+            dispatch(reduceUserCountThreeDeckedShipsAction())
             break
           case '4':
-            dispatch(reduceCountFourDeckedShipsAction())
+            dispatch(reduceUserCountFourDeckedShipsAction())
             break
         }
       }
@@ -49,7 +50,10 @@ const Board = ({board, isMyBoard, readyToFight, canShoot, shoot, typeOfShip, shi
 
   const updateBoard = () => {
     const newBoard = board.getCopyBoard()
-    dispatch(updateBoardAction(newBoard))
+    if(isMyBoard)
+      dispatch(updateUserBoardAction(newBoard))
+    else
+      dispatch(updateRobotBoardAction(newBoard))
   }
 
   const lineNumbers = useMemo(()=>{

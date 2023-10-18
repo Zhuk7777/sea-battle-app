@@ -1,4 +1,4 @@
-export const testEnterDeck = (board,x,y) =>{
+export const testEnterDeck = (board,x,y,isMyBoard) =>{
   //Создаем набор значений из 9 координат
   //|?|?|?|
   //|?|x|?|
@@ -45,7 +45,10 @@ export const testEnterDeck = (board,x,y) =>{
   for (let i = 0; i < 9; i++) {
     if((XX[i] > -1) && (YY[i] > -1) && (XX[i] < 10) && (YY[i] < 10))
       {
-        if(board.getCells(XX[i],YY[i])?.mark?.name === 'ship')
+        if(isMyBoard && board.getCells(XX[i],YY[i])?.mark?.name === 'ship')
+          return false
+        
+        if(!isMyBoard && board.getCells(XX[i],YY[i])?.mark?.name === 'robotShip')
           return false
       }
   }

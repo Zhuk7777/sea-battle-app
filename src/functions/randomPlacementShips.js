@@ -4,6 +4,7 @@ import { areShipsRunOut } from "./areShipsRunOut";
 import { canAddShip } from "./canAddShip";
 
 export const randomPlacementShips = () => {
+  const isMyBoard = false
   const board = new BoardType()
   board.initCells()
   //Позция в массиве соответствует количеству палуб, а значение количеству кораблей
@@ -21,9 +22,9 @@ export const randomPlacementShips = () => {
     y = Math.floor(Math.random() * 10)
     selectDirection = directions[Math.floor(Math.random() * 4)]
 
-    if(canAddShip(board, x, y, selectShip, selectDirection))
+    if(canAddShip(board, x, y, selectShip, selectDirection, isMyBoard))
       {
-        addShip(board, x, y, selectShip, selectDirection)
+        addShip(board, x, y, selectShip, selectDirection, isMyBoard)
         shipsCount[selectShip]--
 
         if(shipsCount[selectShip] === 0)

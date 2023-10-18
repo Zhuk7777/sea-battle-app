@@ -70,7 +70,7 @@ const ShipSelectionForm = ({setTypeOfShip, setShipDirection}) => {
             onClick={(e)=>setShipDirection(e.target.value)}
           />
           <span className={classes['pseudo-radio']}></span>
-          <span className={classes.text}>Ввверх</span>
+          <span className={classes.text}>Вверх</span>
         </label>
         <label className={classes.label}>
           <input 

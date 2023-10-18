@@ -3,6 +3,7 @@ import { Cancel } from "./marks/Cancel"
 import { Damage } from "./marks/Damage"
 import { Miss } from "./marks/Miss"
 import { Ship } from "./marks/Ship"
+import { robotShip } from "./marks/robotShip"
 
 export class BoardType {
   cells = []
@@ -34,6 +35,10 @@ export class BoardType {
 
   addShip(x,y) {
     new Ship(this.getCells(x,y))
+  }
+
+  addRobotShip(x,y) {
+    new robotShip(this.getCells(x,y))
   }
 
   addMiss(x,y) {
