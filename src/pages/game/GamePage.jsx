@@ -10,6 +10,8 @@ import { updateRobotBoardAction } from '../../store/roborBoardReducer';
 import { BoardType } from '../../classes/Board';
 import { updateUserBoardAction } from '../../store/userBoardReducer';
 import { isGameOver } from '../../functions/isGameOver';
+import { isShipDestroyed } from '../../functions/isShipDestroyed';
+import { createFieldAroundDestroyedShip } from '../../functions/createFieldAroundDestroyedShip';
 
 
 const GamePage = () => {
@@ -33,7 +35,10 @@ const GamePage = () => {
     
     if(robotBoard.getCells(x,y)?.mark?.name === "robotShip")
     {
+      let isMyBoard = false
       robotBoard.addDamage(x,y)
+      if(isShipDestroyed(robotBoard,x,y,isMyBoard))
+        createFieldAroundDestroyedShip(robotBoard,x,y)
 
       if(gameMode === '1')
         dispatch(moveTransition())
@@ -74,7 +79,10 @@ const GamePage = () => {
 
       if(userBoard.getCells(x,y)?.mark?.name === "ship")
         {
+          let isMyBoard = true
           userBoard.addDamage(x,y)
+          if(isShipDestroyed(userBoard,x,y,isMyBoard))
+            createFieldAroundDestroyedShip(userBoard,x,y)
 
           if(gameMode === '1')
             endMove = true
